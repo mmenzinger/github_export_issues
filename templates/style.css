@@ -1,0 +1,37 @@
+body{
+    padding: 1rem;
+}
+
+ul.issues{
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+}
+ul.issues li{
+    padding: 0.5rem;
+    border-bottom: 1px solid #ccc;
+    list-style-type: none;
+    position: relative
+}
+ul.issues li:last-child{
+    border-bottom: none;
+}
+ul.issues li:before{
+    content: '';
+    position: absolute;
+    left: -1rem;
+}
+ul.issues li.closed:before{
+    content: '✓';
+    color: green;
+}
+
+ul.issues li.open:before{
+    content: 'o';
+    color: orange;
+}
+
+.info{
+    font-size: 0.5em;
+    color: #666;
+}
+

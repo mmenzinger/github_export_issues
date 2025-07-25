@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ data.repo_name }}</title>
+    <link rel="stylesheet" href="../../templates/pico.grey.min.css">
+    <link rel="stylesheet" href="../../templates/style.css">
+</head>
+<body>
+    <ul class="issues">
+    {% for issue in data.issues %}
+        <li class="{{ issue.state }}"><details>
+            <summary>
+                {{ issue.title }}
+                <div class="info">#{{ issue.number }} by {{ issue.user }} on {{ issue.created_at }}</div>
+            </summary>
+            <article>
+                <header>{{ issue.user }} <span class="info"> updated on {{ issue.updated_at }}</span></header>
+                    {{ issue.body | safe }}
+            </article>
+            {% for comment in issue.comments %}
+                <article>
+                    <header>{{ comment.user }} <span class="info">updated on {{ comment.updated_at }}</span></header>
+                    {{ comment.body | safe }}
+                </article>
+            {% endfor %}
+        </details></li>
+    {% endfor %}
+    </ul>
+</body>
+</html>
