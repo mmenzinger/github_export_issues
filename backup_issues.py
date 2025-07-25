@@ -45,7 +45,7 @@ def extractUser(user, data):
     return user['id']
 
 def extractAssets(content, replace):
-    # this ignores priavate images, which are not accessible without authentication
+    # this ignores private images, which are not accessible without authentication
     # example: eduvidual-infrastructure #1792
     try:
         if content is None:
