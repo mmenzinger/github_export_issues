@@ -345,7 +345,7 @@ def createHTML():
 
 
 if __name__ == "__main__":
-    # loadRawData()
-    # combineRawData()
+    loadRawData()
+    combineRawData()
     parseIssues()
     createHTML()
