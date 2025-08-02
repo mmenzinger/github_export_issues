@@ -21,6 +21,7 @@ ISSUE_DATETIME_CACHE = f"{ISSUE_CACHE_FOLDER}/datetime.json"
 ISSUES_CACHE_FILES = f"{ISSUE_CACHE_FOLDER}/[issue_number].json"
 ISSUE_RAW_FILE = f"{ISSUE_FOLDER}/issues_raw.json"
 ISSUE_PARSED_FILE = f"{ISSUE_FOLDER}/issues_parsed.json"
+ISSUE_HTML_FILE = f"{ISSUE_FOLDER}/index.html"
 TEMPLATES_FOLDER = "templates"
 TEMPLATE_FILE = "template.html"
 TEMPLATE_RELATIVE_ASSETS_FOLDER = "assets"
@@ -211,7 +212,7 @@ def loadRawData():
                         with open(user_file, 'w') as f:
                             json.dump(data['users'], f, indent=4)
 
-                    print(f" {len(comments)} new/changed comment(s)")
+                    print(f" {len(comment_list)} new/changed comment(s)")
                 else:
                     print(" skipped")
             # write datetime to file at the end!
@@ -339,8 +340,9 @@ def createHTML():
         # render template with data
         rendered_html = template.render(data=data)
         # write rendered html to file
+        html_file = makepath(ISSUE_HTML_FILE, replace)
         print(f"Writing rendered HTML to {ISSUES_FOLDER}/{data['repo_name']}/index.html")
-        with open(f"{ISSUES_FOLDER}/{data['repo_name']}/index.html", 'w', encoding="utf-8") as html_file:
+        with open(html_file, 'w', encoding="utf-8") as html_file:
             html_file.write(rendered_html)
 
 
